@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { AuthProvider, useAuth } from '../contexts/auth';
 import '../styles/globals.css';
+import '../styles/styles.css';
 
 // Component to handle route protection
 const AuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -10,8 +11,8 @@ const AuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Don't redirect if still loading or already on login page
-    if (loading || router.pathname === '/login') {
+    // Don't redirect if still loading or already on login/register page
+    if (loading || router.pathname === '/login' || router.pathname === '/register') {
       return;
     }
 
@@ -32,6 +33,11 @@ const AuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   // Show login page without protection
   if (router.pathname === '/login') {
+    return <>{children}</>;
+  }
+
+  // Show register page without protection
+  if (router.pathname === '/register') {
     return <>{children}</>;
   }
 
