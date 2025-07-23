@@ -61,7 +61,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
       </main>
       <footer className="bg-gray-50 border-t">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <span className="text-gray-600">I'm here to stay (Footer)</span>
+          <span className="text-gray-600">I&apos;m here to stay (Footer)</span>
         </div>
       </footer>
     </div>
