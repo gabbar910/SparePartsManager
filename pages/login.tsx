@@ -64,7 +64,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="auth-container">
       <Head>
         <title>Spare Parts Manager</title>
         <meta charSet="utf-8" />

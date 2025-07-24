@@ -68,7 +68,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div className="container">
+        <div className="auth-container">
             <Head>
                 <title>Register - Spare Parts Manager</title>
                 <meta charSet="utf-8" />
