@@ -5,11 +5,11 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en"> {/* 👈 Set language here */}
+      <Html className="h-full" lang="en"> {/* 👈 Set language here */}
         <Head>
           {/* You can also add global meta tags, fonts, etc. */}
         </Head>
-        <body>
+        <body className="h-full">
           <Main />
           <NextScript />
         </body>
