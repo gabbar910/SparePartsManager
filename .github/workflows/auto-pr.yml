@@ -19,6 +19,10 @@ jobs:
     - name: Setup Git
       run: |
         git fetch origin dev
+
+    - name: Generate git diff
+      run: |
+        git diff origin/dev > changes.diff
     
     - name: Install GitHub CLI
       run: |
@@ -33,4 +37,4 @@ jobs:
           --base dev \
           --head ${{ github.ref_name }} \
           --title "Auto PR: ${{ github.ref_name }}" \
-          --body-file echo "PR may already exist"
+          --body-file changes.diff || echo "PR may already exist"
