@@ -3,6 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useAuth } from "../contexts/auth";
 import MainNavigation from "./MainNavigation";
+import Footer from "./Footer";
 
 type Props = {
   children?: ReactNode;
@@ -17,21 +18,18 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
   };
 
   return (
-    <div>      
+    <div className="flex flex-col min-h-screen">      
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <MainNavigation />
-      <main className="max-w-7xl mx-auto pt-20 pb-6 px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow">
         {children}
       </main>
-      <footer className="bg-gray-50 border-t">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <span className="text-gray-600">I'm here to stay (Footer)</span>
-        </div>
-      </footer>
+      
+     <Footer/>
     </div>
   );
 };
