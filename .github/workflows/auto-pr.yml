@@ -33,4 +33,4 @@ jobs:
           --base dev \
           --head ${{ github.ref_name }} \
           --title "Auto PR: ${{ github.ref_name }}" \
-          --body-file summary.md || echo "PR may already exist"
+          --body-file echo "PR may already exist"
