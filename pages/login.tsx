@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Head from 'next/head';
 import { useAuth } from '../contexts/auth';
 
@@ -102,8 +103,8 @@ const LoginPage = () => {
           <input type="submit" className="button" value="Login" />            
         </form>
         <div className="signup">
-          <span className="signup">Don't have an account?
-            <a href="/register">Register</a>
+          <span className="signup">Don&apos;t have an account?
+            <Link href="/register">Register</Link>            
           </span>
         </div>
       </div>

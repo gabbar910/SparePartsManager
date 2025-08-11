@@ -29,7 +29,7 @@ jobs:
         sudo apt install gh -y
 
     - name: Authenticate GitHub CLI
-      run: echo "${{ secrets.PR_CREATION_TOKEN}}" | gh auth login --with-token
+      run: echo "${{ secrets.AUTO_PR_TOKEN}}" | gh auth login --with-token
 
     - name: Create Pull Request
       run: |
@@ -37,4 +37,4 @@ jobs:
           --base dev \
           --head ${{ github.ref_name }} \
           --title "Auto PR: ${{ github.ref_name }}" \
-          --body-file changes.diff || echo "PR may already exist"
+          --body "This PR was automatically created from the feature branch `${{ github.ref_name }}`." \

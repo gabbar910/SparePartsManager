@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "../contexts/auth";
 
 const MainNavigation = () => {
-
     const [isOpen, setIsOpen] = useState(false);
+    const { user, logout, isAuthenticated } = useAuth();
+
+    const handleLogout = () => {
+        logout();
+    };
 
     return (
         <header>
@@ -35,12 +40,29 @@ const MainNavigation = () => {
                         <li>
                             <Link href="/spare-parts">Spare Parts</Link>
                         </li>
+                        <li>
+                            {/* User Authentication Section */}
+                            {isAuthenticated ? (
+                                <div className="auth-section">
+                                    <span className="user-info">Welcome, {user?.username}</span>
+                                    <button 
+                                        onClick={handleLogout}
+                                        className="logout-btn"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="auth-section">
+                                    <Link href="/login" className="login-link">Login</Link>
+                                </div>
+                            )}
+                        </li>
                     </ul>
-                </nav>
-
+                </nav>               
                 <div className="menu-toggle">
                     <div className="hamburger"></div>
-                </div>                
+                </div>
             </div>
         </header>
     );

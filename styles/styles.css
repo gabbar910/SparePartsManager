@@ -247,3 +247,81 @@ header::after {
     display: none;
   }
 }
+
+/* Authentication Section Styles */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.user-info {
+  color: #ebebd3;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.logout-btn {
+  background: #e4b363;
+  color: #464655;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #d4a353;
+  transform: translateY(-1px);
+}
+
+.login-link {
+  color: #ebebd3;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ebebd3;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  background: #ebebd3;
+  color: #009579;
+}
+
+/* Mobile styles for auth section */
+@media only screen and (max-width: 699px) {
+  .auth-section {
+    position: absolute;
+    top: 1em;
+    right: 4em;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .user-info {
+    font-size: 0.8rem;
+  }
+  
+  .logout-btn,
+  .login-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Desktop styles for auth section */
+@media only screen and (min-width: 700px) {
+  .auth-section {
+    float: right;
+    margin-left: 2rem;
+  }
+}

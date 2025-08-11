@@ -8,3 +8,12 @@ export type User = {
   id: number;
   name: string;
 };
+
+export interface Customer {
+  customerId: number;
+  name: string;
+  address: string;
+  pincode: string;
+  state: string;
+  city: string;
+}
