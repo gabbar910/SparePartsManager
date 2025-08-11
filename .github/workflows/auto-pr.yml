@@ -37,4 +37,4 @@ jobs:
           --base dev \
           --head ${{ github.ref_name }} \
           --title "Auto PR: ${{ github.ref_name }}" \
-          --body-file changes.diff || echo "PR may already exist"
+          --body "This PR was automatically created from the feature branch `${{ github.ref_name }}`." \
