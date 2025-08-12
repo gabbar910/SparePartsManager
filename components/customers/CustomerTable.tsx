@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { Customer } from '../../interfaces';
 
+import '../../styles/CustomerTable.css'; // Assuming you have some styles for the table
+
 interface CustomerTableProps {
   customers: Customer[];
   loading?: boolean;
@@ -10,12 +12,12 @@ interface CustomerTableProps {
 const CustomerTable: React.FC<CustomerTableProps> = ({ customers, loading = false }) => {
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="animate-pulse">
-          <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
-          <div className="space-y-3">
+      <div>
+        <div>
+          <div></div>
+          <div>
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-4 bg-gray-200 rounded"></div>
+              <div key={i}></div>
             ))}
           </div>
         </div>
@@ -25,70 +27,51 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ customers, loading = fals
 
   if (customers.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <p className="text-gray-500 text-lg">No customers found</p>
-        <p className="text-gray-400 text-sm mt-2">Try adjusting your filters or search criteria</p>
+      <div>
+        <p>No customers found</p>
+        <p>Try adjusting your filters or search criteria</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="px-6 py-4 border-b border-gray-200">
-        <h2 className="text-xl font-semibold text-gray-800">
-          Customers ({customers.length})
-        </h2>
-      </div>
-      
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+    <React.Fragment>
+      <h2>Customers ({customers.length})</h2>      
+      <div className="table-wrapper auto-overflow">
+        <table >
+          <thead className="fl-table">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Customer ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Address
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                City
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                State
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Pincode
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
+              <th>Customer ID</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Pincode</th>
+              <th>Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="fl-table">
             {customers.map((customer) => (
-              <tr key={customer.customerId} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <tr key={customer.customerId} >
+                <td >
                   {customer.customerId}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td >
                   {customer.name}
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-900 max-w-xs truncate">
+                <td className="truncate">
                   {customer.address}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td >
                   {customer.city}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td >
                   {customer.state}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td >
                   {customer.pincode}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <td >
                   <Link
                     href={`/customers/${customer.customerId}`}
                     className="text-blue-600 hover:text-blue-900 mr-4"
@@ -101,7 +84,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ customers, loading = fals
           </tbody>
         </table>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
