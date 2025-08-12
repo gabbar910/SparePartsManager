@@ -1,0 +1,41 @@
+.filter-section {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .filter-section label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .filter-section select,
+    .filter-section input {
+        padding: 8px;
+        width: 180px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+     /* Clear Filters Button */
+    .clear-btn {
+        padding: 9px 15px;
+        background-color: #e4b363;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .clear-btn:hover {
+        background-color: #ff0000;
+    }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Customer } from '../../interfaces';
+import '../../styles/CustomerFilters.css'; // Assuming you have some styles for this component
 
 interface CustomerFiltersProps {
   customers: Customer[];
@@ -76,35 +77,28 @@ const CustomerFilters: React.FC<CustomerFiltersProps> = ({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-      <h3 className="text-lg font-semibold mb-4">Filter Customers</h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+    <div className="filter-section">            
         {/* Search Input */}
         <div>
-          <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
-            Search by Name or Address
-          </label>
+          <label htmlFor="search">Customer Name</label>
           <input
             type="text"
             id="search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Enter name or address..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter name ..."            
           />
         </div>
 
         {/* State Filter */}
         <div>
-          <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="state">
             Filter by State
           </label>
           <select
             id="state"
             value={selectedState}
-            onChange={(e) => handleStateChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => handleStateChange(e.target.value)}          
           >
             <option value="">All States</option>
             {uniqueStates.map(state => (
@@ -115,14 +109,13 @@ const CustomerFilters: React.FC<CustomerFiltersProps> = ({
 
         {/* City Filter */}
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="city">
             Filter by City
           </label>
           <select
             id="city"
             value={selectedCity}
-            onChange={(e) => handleCityChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => handleCityChange(e.target.value)}            
           >
             <option value="">All Cities</option>
             {uniqueCities.map(city => (
@@ -133,30 +126,28 @@ const CustomerFilters: React.FC<CustomerFiltersProps> = ({
 
         {/* Pincode Filter */}
         <div>
-          <label htmlFor="pincode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="pincode">
             Filter by Pincode
           </label>
           <select
             id="pincode"
             value={selectedPincode}
-            onChange={(e) => setSelectedPincode(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => setSelectedPincode(e.target.value)}            
           >
             <option value="">All Pincodes</option>
             {uniquePincodes.map(pincode => (
               <option key={pincode} value={pincode}>{pincode}</option>
             ))}
           </select>
-        </div>
-      </div>
+        </div>      
 
       {/* Clear Filters Button */}
-      <div className="flex justify-end">
-        <button
-          onClick={handleClearFilters}
-          className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+      <div>
+        <label>All Filters</label>
+        <button className="clear-btn"
+          onClick={handleClearFilters}          
         >
-          Clear Filters
+          Clear
         </button>
       </div>
     </div>
